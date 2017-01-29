@@ -1,2 +1,80 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
+<page id="jobs_index">
+  <div class="padding-24" style="padding:24px 0px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 hidden-xs">
+          <% @banners.each do |banner| %>
+            <%= image_tag banner.left_banner_image, class:"thumbnail" %>
+          <% end %>
+        </div>
+        <div class="col-md-8 col-xs-12">
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-show-search" type="button" data-toggle="collapse" data-target="#collapseSearch" aria-expanded="false" aria-controls="collapseExample" style="width:100%;background:#f5f5f5;border-color:#f5f5f5;color:#424242;font-weight:500;">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+              <div class="collapse" id="collapseSearch">
+                <div class="search-box" style="margin-top:24px;">
+                  <%= form_tag search_jobs_path, method: :get do |f| %>
+                    <div class="form-group">
+                      <p class="bold text-muted uppercase">Søk ledige stillinger</p>
+                    </div>
+                    <div class="form-group">
+                      <%= text_field_tag :search, nil, placeholder:"Søkeord", class:"form-control form-control-lg" %>
+                    </div>
+                    <div class="form-group">
+                      <%= text_field_tag :location, nil, placeholder: "Sted", class:"form-control form-control-lg" %>
+                    </div>
+                    <div class="form-group">
+                      <%= select_tag :job_category, options_from_collection_for_select(JobCategory.all, :id, :name), class:"form-control form-control-lg", style:"padding: 6px 12px;box-shadow:none !important;border-radius:0px !important;border:1px solid #f5f5f5 !important;" %>
+                    </div>
+                    <div class="form-group">
+                      <%= select_tag :job_type, options_from_collection_for_select(JobType.all, :id, :name), class:"form-control form-control-lg", style:"padding: 6px 12px;box-shadow:none !important;border:1px solid #f5f5f5 !important;" %>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0rem;">
+                      <%= submit_tag "Søk", class:"btn", style:"width:100%;background:#FFC107 !important;border-color:#FFC107 !important;color:#fff;font-weight:500;" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="padding-24" style="padding:24px 0px 0px 0px">
+                <h4 class="bold">Ledige Stillinger</h4>
+              </div>
+              <% @jobs.each do |job| %>
+                <% if job.published_at? %>
+                  <div class="none" style="padding:36px 0px;text-align:justify !important;border-bottom:1px solid #f5f5f5;">
+                    <div class="row">
+                      <div class="col-md-3 col-xs-6">
+                        <%= image_tag job.employer.employer_logo_image, class:"thumbnail", style:"width:100%;margin-bottom:12px !important;" %>
+                      </div>
+                      <div class="col-md-9 col-xs-12">
+                        <p class="uppercase"><% if job.exclusive %><span class="label" style="background:#FFC107 !important;border-color:#FFC107 !important;color:#fff;font-weight:500;border-radius:3px !important;">Exclusive</span> &middot; <% end %><span class="bold"><%= job.employer.name %></span> &middot; <%= job.job_category.name %> &middot; <%= job.job_type.name %></p>
+                        <h4 class="bold"><%= job.title %></h4>
+                        <p class="text-muted"><%= truncate(job.content.html_safe, length: 150, :escape => false) %></p>
+                        <%= link_to "Vise jobb annonse", job, class:"btn", style:"background:#f5f5f5;color:#424242;border-color:#f5f5f5;font-weight:500;" %><% if job.employer.profile %> <%= link_to "Vise Bedriftsprofil", job.employer, class:"btn", style:"background:#424242;color:#fff;font-weight:600;border-color:#424242;" %><% end %><% if job.exclusive %> <%= link_to "Søk nå", job, class:"btn", style:"background:#009688;border-color:#009688;color:#fff;font-weight:500;" %><% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 center" style="padding:24px 0px;">
+              <%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 hidden-xs">
+          <% @banners.each do |banner| %>
+            <%= image_tag banner.right_banner_image, class:"thumbnail" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</page>
