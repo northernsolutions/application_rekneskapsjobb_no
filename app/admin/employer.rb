@@ -41,6 +41,7 @@ ActiveAdmin.register Employer do
       row :twitter_link
       row :youtube_link
       row :instagram_link
+      row :linkedin_link
       row :published_at
     end
   end
@@ -55,6 +56,7 @@ ActiveAdmin.register Employer do
       f.input :website_link
       f.input :facebook_link
       f.input :twitter_link
+      f.input :linkedin_link
       f.input :youtube_link
       f.input :instagram_link
     end
