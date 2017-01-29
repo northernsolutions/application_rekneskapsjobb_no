@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :contact
   resources :jobs collection do
       get :search
-    end
   end
   resources :employers
   resources :for_employers
