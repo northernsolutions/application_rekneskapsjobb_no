@@ -1,44 +1,59 @@
 <nav class="navbar-top">
   <div class="container">
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle dropdown-navbar-top" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Northern Solutions Network
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="dropdown">
+          <button class="btn btn-navbar-top dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Northern Solutions Network <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-navbar-top" aria-labelledby="dropdownMenu1">
+            <%= image_tag("ns-logo.jpg", class:"thumbnail thumbnail-ns", style:"width: 170px !important;padding: 16px !important;") %>
+            <h6 class="dropdown-header">Our Sites</h6>
+  			    <li><a class="dropdown-item" href="http://www.helsejobbnorge.no">Helsejobbnorge.no</a></li>
+  			    <li><a class="dropdown-item" href="http://www.halsopersonal.se">Hälsopersonal.se</a></li>
+  			    <li><a class="dropdown-item" href="http://www.lakarpersonal.se">Läkarpersonal.se</a></li>
+  			    <li><a class="dropdown-item" href="http://www.teknikpersonal.se">Tekniskpersonal.se</a></li>
+  			    <li><a class="dropdown-item" href="http://www.teknikportalen.no">Teknikportalen.no</a></li>
+  			    <li><a class="dropdown-item" href="http://www.rekneskapsjobb.no">Rekneskapsjobb.no</a></li>
+  			    <li><a class="dropdown-item" href="http://www.legepersonal.no">Legepersonal.no</a></li>
+  			    <h6 class="dropdown-header">The Company</h6>
+  			    <li><a class="dropdown-item" href="http://www.northernsolutions.se">About</a></li>
+  			    <li><a class="dropdown-item" href="#">Get in Touch</a></li>
+  			    <h6 class="dropdown-header">Follow</h6></li>
+  			    <li><a class="dropdown-item"><i class="fa fa-facebook" style="font-size:1.25rem;"></i> &nbsp; <i class="fa fa-twitter" style="font-size:1.25rem;"></i> &nbsp; <i class="fa fa-instagram" style="font-size:1.25rem;"></i></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
-
-<nav class="navbar navbar-default">
+<nav class="navbar">
   <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><span style="color:#FFB300;">Rekneskaps</span>Jobb.no</a>
-    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true" style="color:#424242 !important;"></i>
+          </button>
+          <%= link_to(root_path) do %>
+            <span class="navbar-brand">rekneskapsjobb<span style="color:#FFC107;">.no</span></span>
+          <% end %>
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Ledige Stillinger", jobs_path %></li>
-        <li><%= link_to "Bedriftsprofiler", employers_path %></li>
-        <li><%= link_to "Let the job find you", let_the_job_find_you_index_path %></li>
-        <li><%= link_to "Om", about_index_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" style="background:#FFB300;color:#fff;border-color:#FFB300;">Annonsering</a></li>
-      </ul>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Ledige Stillinger", jobs_path %></li>
+            <li><%= link_to "Bedriftsprofiler", employers_path %></li>
+            <li><a>Let the job find you</a></li>
+            <li><%= link_to "Om Tjensten", about_index_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "For Arbeidsgivere", for_employers_path, class:"btn btn-for-employers navbar-btn" %></li>
+          </ul>
+        </div>
+      </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>

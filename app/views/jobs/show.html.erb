@@ -1,2 +1,110 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
+<page id="jobs_show">
+  <div class="padding-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 hidden-xs">
+          <div class="left_banner_image">
+            <% if @job.exclusive == false %>
+              <% @banners.each do |banner| %>
+                <%= image_tag banner.left_banner_image, class:"thumbnail" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="job" style="padding:12px 0px;">
+            <div class="row">
+              <div class="col-md-12">
+                <% if @job.exclusive %>
+                  <%= image_tag @job.employer.employer_header_image, class:"thumbnail", style:"border-radius:0px !important;border:none !important;margin-bottom:24px !important;" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="none" style="text-align:justify !important;">
+              <div class="row">
+                <div class="col-md-3 col-xs-6">
+                  <%= image_tag @job.employer.employer_logo_image, class:"thumbnail", style:"width:100%;margin-bottom:12px !important;" %>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                  <p class="uppercase"><% if @job.exclusive %><span class="label" style="background:#FFC107 !important;border-color:#FFC107 !important;color:#fff;font-weight:500;border-radius:3px !important;">Exclusive</span> &middot; <% end %><span class="bold"><%= @job.employer.name %></span> &middot; <%= @job.job_category.name %> &middot; <%= @job.job_type.name %></p>
+                  <h4 class="bold"><%= @job.title %></h4>
+                  <% if @job.employer.profile %> <%= link_to "Vise Bedriftsprofil", @job.employer, class:"btn", style:"background:#424242;color:#fff;font-weight:600;border-color:#424242;" %><% end %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="job-content" style="padding:24px 0px;">
+                  <span><%= @job.content.html_safe %></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="job-info" style="background:#f5f5f5;padding:24px;margin-bottom:24px;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="bold">Stillingskategori</p>
+                      <p><%= @job.job_category.name %></p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="bold">Stillingstyp</p>
+                      <p><%= @job.job_type.name %></p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="bold">Sted/By</p>
+                      <p><%= @job.location %></p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="bold">Søknadsfrist</p>
+                      <p><%= @job.apply_date %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="bold">Kontakt</p>
+                      <span style="margin-bottom:0px !important;"><%= @job.contact_info %></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button type="button" class="btn btn-lg btn-apply-now" data-toggle="modal" data-target="#myModal" style="width:100%;background:#FFC107 !important;border-color:#FFC107 !important;">
+                  Søk nå
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 hidden-xs">
+          <div class="right_banner_image">
+            <% if @job.exclusive == false %>
+              <% @banners.each do |banner| %>
+                <%= image_tag banner.right_banner_image, class:"thumbnail" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</page>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Søk nå</h4>
+      </div>
+      <div class="modal-body">
+        <%= @job.apply_info %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+      </div>
+    </div>
+  </div>
+</div>
