@@ -21,6 +21,7 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 
 group :development, :test do
   gem 'byebug', platform: :mri

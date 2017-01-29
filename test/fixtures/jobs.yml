@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exclusive: false
+  employer: one
+  job_category: one
+  job_type: one
+  title: MyString
+  content: MyText
+  location: MyString
+  apply_date: 2017-01-29
+  apply_info: MyString
+
+two:
+  exclusive: false
+  employer: two
+  job_category: two
+  job_type: two
+  title: MyString
+  content: MyText
+  location: MyString
+  apply_date: 2017-01-29
+  apply_info: MyString

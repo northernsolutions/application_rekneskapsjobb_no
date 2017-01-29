@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128114843) do
+ActiveRecord::Schema.define(version: 20170129132713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,4 +46,54 @@ ActiveRecord::Schema.define(version: 20170128114843) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "employers", force: :cascade do |t|
+    t.boolean  "profile"
+    t.string   "name"
+    t.text     "summary"
+    t.text     "about"
+    t.text     "vision"
+    t.string   "website_link"
+    t.string   "facebook_link"
+    t.string   "twitter_link"
+    t.string   "youtube_link"
+    t.string   "instagram_link"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "linkedin_link"
+    t.datetime "published_at"
+  end
+
+  create_table "job_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.boolean  "exclusive"
+    t.integer  "employer_id"
+    t.integer  "job_category_id"
+    t.integer  "job_type_id"
+    t.string   "title"
+    t.text     "content"
+    t.string   "location"
+    t.date     "apply_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.datetime "published_at"
+    t.text     "apply_info"
+    t.index ["employer_id"], name: "index_jobs_on_employer_id", using: :btree
+    t.index ["job_category_id"], name: "index_jobs_on_job_category_id", using: :btree
+    t.index ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
+  end
+
+  add_foreign_key "jobs", "employers"
+  add_foreign_key "jobs", "job_categories"
+  add_foreign_key "jobs", "job_types"
 end
