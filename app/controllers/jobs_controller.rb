@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all.order('exclusive DESC').order('published_at DESC').paginate(:page => params[:page], :per_page => 2)
+    @jobs = Job.all.order('exclusive DESC').order('published_at DESC')
     @banners = Banner.all
   end
 
