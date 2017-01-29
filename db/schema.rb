@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129155544) do
+ActiveRecord::Schema.define(version: 20170129161352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,16 @@ ActiveRecord::Schema.define(version: 20170129155544) do
   end
 
   create_table "banners", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "left_banner_image_file_name"
+    t.string   "left_banner_image_content_type"
+    t.integer  "left_banner_image_file_size"
+    t.datetime "left_banner_image_updated_at"
+    t.string   "right_banner_image_file_name"
+    t.string   "right_banner_image_content_type"
+    t.integer  "right_banner_image_file_size"
+    t.datetime "right_banner_image_updated_at"
   end
 
   create_table "employers", force: :cascade do |t|
@@ -62,10 +70,18 @@ ActiveRecord::Schema.define(version: 20170129155544) do
     t.string   "twitter_link"
     t.string   "youtube_link"
     t.string   "instagram_link"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "linkedin_link"
     t.datetime "published_at"
+    t.string   "employer_header_image_file_name"
+    t.string   "employer_header_image_content_type"
+    t.integer  "employer_header_image_file_size"
+    t.datetime "employer_header_image_updated_at"
+    t.string   "employer_logo_image_file_name"
+    t.string   "employer_logo_image_content_type"
+    t.integer  "employer_logo_image_file_size"
+    t.datetime "employer_logo_image_updated_at"
   end
 
   create_table "job_categories", force: :cascade do |t|
